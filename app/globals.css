@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --color-paper: #fbf6ec;
+  --color-paper-deep: #f3ead9;
+  --color-ink: #241512;
+  --color-maroon: #6b1e2a;
+  --color-maroon-deep: #4c141d;
+  --color-gold: #c9972b;
+  --color-gold-soft: #e3c069;
+  --color-teal: #1f4b43;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-deep: var(--color-paper-deep);
+  --color-ink: var(--color-ink);
+  --color-maroon: var(--color-maroon);
+  --color-maroon-deep: var(--color-maroon-deep);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-teal: var(--color-teal);
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-work-sans);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-work-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Thin gold rule with a small diamond at center, evoking an invitation card divider */
+.ornament-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold) 20%,
+    var(--color-gold) 80%,
+    transparent
+  );
+}
+
+.ornament-rule::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
