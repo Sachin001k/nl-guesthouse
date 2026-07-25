@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import type { Booking } from "@/types/booking";
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default async function BookingSuccessPage({
   let booking: Booking | null = null;
 
   if (id) {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const { data } = await supabase
       .from("bookings")
       .select("*")

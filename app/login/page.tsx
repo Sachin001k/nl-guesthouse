@@ -1,14 +1,20 @@
-export default function LoginPage() {
+import type { Metadata } from "next";
+import LoginForm from "@/app/components/LoginForm";
+
+export const metadata: Metadata = {
+  title: "Admin Login | N L Marriage Hall & Guest House",
+};
+
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ redirectTo?: string }>;
+}) {
+  const { redirectTo } = await searchParams;
+
   return (
-    <main className="flex-1 flex items-center justify-center px-4 py-24 text-center">
-      <div>
-        <h1 className="font-display text-3xl font-semibold text-maroon-deep">
-          Admin Login
-        </h1>
-        <p className="mt-3 text-ink/60">
-          Coming next: Supabase email &amp; password authentication.
-        </p>
-      </div>
+    <main className="flex-1 flex items-center justify-center px-4 py-16 sm:py-24">
+      <LoginForm redirectTo={redirectTo || "/admin"} />
     </main>
   );
 }
